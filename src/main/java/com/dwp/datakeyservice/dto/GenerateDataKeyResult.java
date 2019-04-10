@@ -1,4 +1,4 @@
-package com.dwp.datakeyservice.DTO;
+package com.dwp.datakeyservice.dto;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class GenerateDataKeyResult {

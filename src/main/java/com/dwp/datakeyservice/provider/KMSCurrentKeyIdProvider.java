@@ -1,4 +1,4 @@
-package com.dwp.datakeyservice.Provider;
+package com.dwp.datakeyservice.provider;
 
 import org.springframework.stereotype.Service;
 

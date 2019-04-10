@@ -1,4 +1,4 @@
-package com.dwp.datakeyservice.Provider;
+package com.dwp.datakeyservice.provider;
 
 public interface CurrentKeyIdProvider {
     String getKeyId();

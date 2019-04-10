@@ -2,7 +2,7 @@ package com.dwp.datakeyservice;
 
 import static org.junit.Assert.assertNotNull;
 
-import com.dwp.datakeyservice.Controller.DataKeyController;
+import com.dwp.datakeyservice.controller.DataKeyController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
