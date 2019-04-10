@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 public class DataKeyController {
 
     @RequestMapping(value = "/datakey", method = RequestMethod.GET)
-    public GenerateDataKeyResponse Generate() {
+    public GenerateDataKeyResponse generate() {
         return new GenerateDataKeyResponse();
     }
 
     @RequestMapping(value = "/datakey/actions/decrypt", method = RequestMethod.POST)
-    public DecryptDataKeyResponse Decrypt(
+    public DecryptDataKeyResponse decrypt(
             @RequestParam(value = "keyId") String dataKeyEncryptionKeyId,
             @RequestBody String ciphertextDataKey
     ) {
