@@ -8,7 +8,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.dwp'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.google.guava:guava:27.0.1-jre'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.amazonaws:aws-java-sdk-kms:1.11.534'
 

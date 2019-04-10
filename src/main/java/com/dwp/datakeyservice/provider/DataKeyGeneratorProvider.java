@@ -1,7 +1,7 @@
 package com.dwp.datakeyservice.provider;
 
-import com.dwp.datakeyservice.dto.GenerateDataKeyResult;
+import com.dwp.datakeyservice.dto.GenerateDataKeyResponse;
 
 public interface DataKeyGeneratorProvider {
-    GenerateDataKeyResult generateDataKey(String keyId);
+    GenerateDataKeyResponse generateDataKey(String keyId);
 }

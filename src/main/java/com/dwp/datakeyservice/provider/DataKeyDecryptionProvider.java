@@ -1,7 +1,7 @@
 package com.dwp.datakeyservice.provider;
 
-import com.dwp.datakeyservice.dto.DecryptDataKeyResult;
+import com.dwp.datakeyservice.dto.DecryptDataKeyResponse;
 
 public interface DataKeyDecryptionProvider {
-    DecryptDataKeyResult decryptDataKey(String dataKeyEncryptionKeyId, String ciphertextDataKey);
+    DecryptDataKeyResponse decryptDataKey(String dataKeyEncryptionKeyId, String ciphertextDataKey);
 }

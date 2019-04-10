@@ -9,5 +9,4 @@ public class DataKeyServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(DataKeyServiceApplication.class, args);
     }
-
 }

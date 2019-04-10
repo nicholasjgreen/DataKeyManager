@@ -1,6 +1,6 @@
 package com.dwp.datakeyservice.provider;
 
-import com.dwp.datakeyservice.dto.GenerateDataKeyResult;
+import com.dwp.datakeyservice.dto.GenerateDataKeyResponse;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
@@ -11,7 +11,7 @@ public class KMSDataKeyGeneratorProviderTest {
         KMSCurrentKeyIdProvider keyIdProvider = new KMSCurrentKeyIdProvider();
         KMSDataKeyGeneratorProvider providerUnderTest = new KMSDataKeyGeneratorProvider();
 
-        GenerateDataKeyResult result = providerUnderTest.generateDataKey(keyIdProvider.getKeyId());
+        GenerateDataKeyResponse result = providerUnderTest.generateDataKey(keyIdProvider.getKeyId());
         Assert.notNull(result, "Must return a result");
     }
 
@@ -20,7 +20,7 @@ public class KMSDataKeyGeneratorProviderTest {
     public void canGenerateDataKeyFailure(){
         KMSDataKeyGeneratorProvider providerUnderTest = new KMSDataKeyGeneratorProvider();
 
-        GenerateDataKeyResult result = providerUnderTest.generateDataKey("frederick no keys");
+        GenerateDataKeyResponse result = providerUnderTest.generateDataKey("frederick no keys");
         Assert.isNull(result, "Must return a null");
     }
 

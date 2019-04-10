@@ -4,7 +4,7 @@ import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
 import com.amazonaws.services.kms.model.DecryptRequest;
 import com.amazonaws.services.kms.model.DecryptResult;
-import com.dwp.datakeyservice.dto.DecryptDataKeyResult;
+import com.dwp.datakeyservice.dto.DecryptDataKeyResponse;
 import org.springframework.stereotype.Service;
 
 import java.nio.ByteBuffer;
@@ -16,7 +16,7 @@ public class KMSDataKeyDecryptionProvider implements DataKeyDecryptionProvider {
     private Base64.Encoder encoder = Base64.getEncoder();
     private Base64.Decoder decoder = Base64.getDecoder();
 
-    public DecryptDataKeyResult decryptDataKey(String dataKeyEncryptionKeyId, String ciphertextDataKey) {
+    public DecryptDataKeyResponse decryptDataKey(String dataKeyEncryptionKeyId, String ciphertextDataKey) {
 
         ByteBuffer ciphertextDataKeybuffer = ByteBuffer.wrap(decoder.decode(ciphertextDataKey));
         DecryptRequest req = new DecryptRequest().withCiphertextBlob(ciphertextDataKeybuffer);
@@ -32,7 +32,7 @@ public class KMSDataKeyDecryptionProvider implements DataKeyDecryptionProvider {
         // Lame, but it will do for now
         byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-        return new DecryptDataKeyResult(result.getKeyId(),
+        return new DecryptDataKeyResponse(result.getKeyId(),
                 encoder.encodeToString(iv),
                 encoder.encodeToString(result.getPlaintext().array()));
     }

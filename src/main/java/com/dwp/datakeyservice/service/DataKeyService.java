@@ -1,7 +1,7 @@
 package com.dwp.datakeyservice.service;
 
-import com.dwp.datakeyservice.dto.DecryptDataKeyResult;
-import com.dwp.datakeyservice.dto.GenerateDataKeyResult;
+import com.dwp.datakeyservice.dto.DecryptDataKeyResponse;
+import com.dwp.datakeyservice.dto.GenerateDataKeyResponse;
 import com.dwp.datakeyservice.provider.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class DataKeyService {
         this.dataKeyDecryptionProvider = dataKeyDecryptionProvider;
     }
 
-    public GenerateDataKeyResult generate() {
+    public GenerateDataKeyResponse generate() {
         String keyEncryptionKeyId = currentKeyIdProvider.getKeyId();
         return dataKeyProvider.generateDataKey(keyEncryptionKeyId);
     }
 
-    public DecryptDataKeyResult decrypt(String dataKeyEncryptionKeyId, String ciphertextDataKey) {
+    public DecryptDataKeyResponse decrypt(String dataKeyEncryptionKeyId, String ciphertextDataKey) {
         return dataKeyDecryptionProvider.decryptDataKey(dataKeyEncryptionKeyId, ciphertextDataKey);
     }
 }

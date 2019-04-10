@@ -15,10 +15,4 @@ public class DataKeyServiceApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
-    @Test
-    public void testAppHasAGreeting() {
-        DataKeyController classUnderTest = new DataKeyController();
-        assertNotNull("app should have a greeting", classUnderTest.Generate());
-    }
 }
