@@ -3,9 +3,12 @@ package DataKeyManagerIntegration.Provider;
 import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
 import com.amazonaws.services.kms.model.*;
+import org.springframework.stereotype.Service;
+
 import java.util.Base64;
 
-public class KMSDataKeyGeneratorProvider {
+@Service
+public class KMSDataKeyGeneratorProvider implements DataKeyGeneratorProvider {
     private AWSKMS kmsClient = AWSKMSClientBuilder.defaultClient();
     private Base64.Encoder encoder = Base64.getEncoder();
 

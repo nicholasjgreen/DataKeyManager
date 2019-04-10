@@ -1,5 +1,7 @@
 package DataKeyManagerIntegration.Provider;
 
+import org.springframework.stereotype.Service;
+
 import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
 import com.amazonaws.services.kms.model.KeyListEntry;
@@ -7,7 +9,8 @@ import com.amazonaws.services.kms.model.ListKeysRequest;
 
 import java.util.List;
 
-public class KMSCurrentKeyIdProvider {
+@Service
+public class KMSCurrentKeyIdProvider implements CurrentKeyIdProvider  {
 
     public String getKeyId() {
         return this.listKeys(1).get(0).getKeyId();
