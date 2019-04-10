@@ -1,4 +1,4 @@
-package DataKeyManagerIntegration.Provider;
+package com.dwp.datakeyservice.Provider;
 
 import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
@@ -12,14 +12,14 @@ public class KMSDataKeyGeneratorProvider implements DataKeyGeneratorProvider {
     private AWSKMS kmsClient = AWSKMSClientBuilder.defaultClient();
     private Base64.Encoder encoder = Base64.getEncoder();
 
-    public DataKeyManagerIntegration.DTO.GenerateDataKeyResult generateDataKey(String keyId) {
+    public com.dwp.datakeyservice.DTO.GenerateDataKeyResult generateDataKey(String keyId) {
         GenerateDataKeyRequest dataKeyRequest = new GenerateDataKeyRequest();
         dataKeyRequest.setKeyId(keyId);
         dataKeyRequest.setKeySpec("AES_128");
 
         try {
             GenerateDataKeyResult result = kmsClient.generateDataKey(dataKeyRequest);
-            return new DataKeyManagerIntegration.DTO.GenerateDataKeyResult(result.getKeyId(),
+            return new com.dwp.datakeyservice.DTO.GenerateDataKeyResult(result.getKeyId(),
                     encoder.encodeToString(result.getPlaintext().array()),
                     encoder.encodeToString(result.getCiphertextBlob().array()));
         }

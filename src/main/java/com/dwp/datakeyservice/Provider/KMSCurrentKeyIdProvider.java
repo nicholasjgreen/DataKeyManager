@@ -1,4 +1,4 @@
-package DataKeyManagerIntegration.Provider;
+package com.dwp.datakeyservice.Provider;
 
 import org.springframework.stereotype.Service;
 

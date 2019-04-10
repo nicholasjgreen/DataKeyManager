@@ -1,8 +1,8 @@
-package DataKeyManagerIntegration.Service;
+package com.dwp.datakeyservice.Service;
 
-import DataKeyManagerIntegration.DTO.DecryptDataKeyResult;
-import DataKeyManagerIntegration.DTO.GenerateDataKeyResult;
-import DataKeyManagerIntegration.Provider.*;
+import com.dwp.datakeyservice.DTO.DecryptDataKeyResult;
+import com.dwp.datakeyservice.DTO.GenerateDataKeyResult;
+import com.dwp.datakeyservice.Provider.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

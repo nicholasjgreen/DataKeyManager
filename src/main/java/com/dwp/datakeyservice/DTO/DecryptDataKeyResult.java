@@ -1,4 +1,4 @@
-package DataKeyManagerIntegration.DTO;
+package com.dwp.datakeyservice.DTO;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class DecryptDataKeyResult {
