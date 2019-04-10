@@ -20,12 +20,13 @@ public class KMSDataKeyGeneratorProvider implements DataKeyGeneratorProvider {
 
         try {
             GenerateDataKeyResult result = kmsClient.generateDataKey(dataKeyRequest);
-            return new GenerateDataKeyResponse(result.getKeyId(),
+            return new GenerateDataKeyResponse(
+                    result.getKeyId(),
                     encoder.encodeToString(result.getPlaintext().array()),
-                    encoder.encodeToString(result.getCiphertextBlob().array()));
-        }
-        catch(NotFoundException | DisabledException | KeyUnavailableException | DependencyTimeoutException |
-                InvalidKeyUsageException | InvalidGrantTokenException | KMSInternalException | KMSInvalidStateException ex){
+                    encoder.encodeToString(result.getCiphertextBlob().array())
+            );
+        } catch (NotFoundException | DisabledException | KeyUnavailableException | DependencyTimeoutException |
+                InvalidKeyUsageException | InvalidGrantTokenException | KMSInternalException | KMSInvalidStateException ex) {
             // TODO: logging goes here
             return null;
         }

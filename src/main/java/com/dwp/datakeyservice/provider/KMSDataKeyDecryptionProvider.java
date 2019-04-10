@@ -30,10 +30,12 @@ public class KMSDataKeyDecryptionProvider implements DataKeyDecryptionProvider {
         //    return null;
 
         // Lame, but it will do for now
-        byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        byte[] iv = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        return new DecryptDataKeyResponse(result.getKeyId(),
+        return new DecryptDataKeyResponse(
+                result.getKeyId(),
                 encoder.encodeToString(iv),
-                encoder.encodeToString(result.getPlaintext().array()));
+                encoder.encodeToString(result.getPlaintext().array())
+        );
     }
 }

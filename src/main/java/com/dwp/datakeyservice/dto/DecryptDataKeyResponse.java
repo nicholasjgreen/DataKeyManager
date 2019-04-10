@@ -2,6 +2,10 @@ package com.dwp.datakeyservice.dto;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class DecryptDataKeyResponse {
+    public String dataKeyEncryptionKeyId;
+    public String iv;
+    public String plaintextDataKey;
+
     public DecryptDataKeyResponse() {
     }
 
@@ -10,9 +14,4 @@ public class DecryptDataKeyResponse {
         this.iv = iv;
         this.plaintextDataKey = plaintextDataKey;
     }
-
-
-    public String dataKeyEncryptionKeyId;
-    public String iv;
-    public String plaintextDataKey;
 }

@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 public class KMSDataKeyGeneratorProviderTest {
 
     @Test
-    public void canGenerateDataKey(){
+    public void canGenerateDataKey() {
         KMSCurrentKeyIdProvider keyIdProvider = new KMSCurrentKeyIdProvider();
         KMSDataKeyGeneratorProvider providerUnderTest = new KMSDataKeyGeneratorProvider();
 
@@ -17,7 +17,7 @@ public class KMSDataKeyGeneratorProviderTest {
 
 
     @Test
-    public void canGenerateDataKeyFailure(){
+    public void canGenerateDataKeyFailure() {
         KMSDataKeyGeneratorProvider providerUnderTest = new KMSDataKeyGeneratorProvider();
 
         GenerateDataKeyResponse result = providerUnderTest.generateDataKey("frederick no keys");
