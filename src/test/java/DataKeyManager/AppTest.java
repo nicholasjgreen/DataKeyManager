@@ -3,12 +3,13 @@
  */
 package DataKeyManager;
 
+import DataKeyManager.Controller.DataKeyController;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AppTest {
     @Test public void testAppHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+        DataKeyController classUnderTest = new DataKeyController();
+        assertNotNull("app should have a greeting", classUnderTest.Generate());
     }
 }
