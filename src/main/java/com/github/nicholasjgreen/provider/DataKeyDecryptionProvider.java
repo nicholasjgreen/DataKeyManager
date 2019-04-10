@@ -1,6 +1,6 @@
-package com.dwp.datakeyservice.provider;
+package com.github.nicholasjgreen.provider;
 
-import com.dwp.datakeyservice.dto.DecryptDataKeyResponse;
+import com.github.nicholasjgreen.dto.DecryptDataKeyResponse;
 
 public interface DataKeyDecryptionProvider {
     DecryptDataKeyResponse decryptDataKey(String dataKeyEncryptionKeyId, String ciphertextDataKey);

@@ -1,9 +1,9 @@
-package com.dwp.datakeyservice.provider;
+package com.github.nicholasjgreen.provider;
 
 import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
 import com.amazonaws.services.kms.model.*;
-import com.dwp.datakeyservice.dto.GenerateDataKeyResponse;
+import com.github.nicholasjgreen.dto.GenerateDataKeyResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;

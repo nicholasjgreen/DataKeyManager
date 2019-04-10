@@ -1,4 +1,4 @@
-package com.dwp.datakeyservice;
+package com.github.nicholasjgreen;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

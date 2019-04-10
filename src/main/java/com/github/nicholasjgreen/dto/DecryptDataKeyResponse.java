@@ -1,4 +1,4 @@
-package com.dwp.datakeyservice.dto;
+package com.github.nicholasjgreen.dto;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class DecryptDataKeyResponse {

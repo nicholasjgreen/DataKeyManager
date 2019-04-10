@@ -1,6 +1,6 @@
-package com.dwp.datakeyservice.provider;
+package com.github.nicholasjgreen.provider;
 
-import com.dwp.datakeyservice.dto.GenerateDataKeyResponse;
+import com.github.nicholasjgreen.dto.GenerateDataKeyResponse;
 
 public interface DataKeyGeneratorProvider {
     GenerateDataKeyResponse generateDataKey(String keyId);

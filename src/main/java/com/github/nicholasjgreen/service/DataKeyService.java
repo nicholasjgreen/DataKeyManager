@@ -1,10 +1,10 @@
-package com.dwp.datakeyservice.service;
+package com.github.nicholasjgreen.service;
 
-import com.dwp.datakeyservice.dto.DecryptDataKeyResponse;
-import com.dwp.datakeyservice.dto.GenerateDataKeyResponse;
-import com.dwp.datakeyservice.provider.CurrentKeyIdProvider;
-import com.dwp.datakeyservice.provider.DataKeyDecryptionProvider;
-import com.dwp.datakeyservice.provider.DataKeyGeneratorProvider;
+import com.github.nicholasjgreen.dto.DecryptDataKeyResponse;
+import com.github.nicholasjgreen.dto.GenerateDataKeyResponse;
+import com.github.nicholasjgreen.provider.CurrentKeyIdProvider;
+import com.github.nicholasjgreen.provider.DataKeyDecryptionProvider;
+import com.github.nicholasjgreen.provider.DataKeyGeneratorProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

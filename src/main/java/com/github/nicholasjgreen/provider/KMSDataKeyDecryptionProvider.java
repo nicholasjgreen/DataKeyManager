@@ -1,10 +1,10 @@
-package com.dwp.datakeyservice.provider;
+package com.github.nicholasjgreen.provider;
 
 import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
 import com.amazonaws.services.kms.model.DecryptRequest;
 import com.amazonaws.services.kms.model.DecryptResult;
-import com.dwp.datakeyservice.dto.DecryptDataKeyResponse;
+import com.github.nicholasjgreen.dto.DecryptDataKeyResponse;
 import org.springframework.stereotype.Service;
 
 import java.nio.ByteBuffer;

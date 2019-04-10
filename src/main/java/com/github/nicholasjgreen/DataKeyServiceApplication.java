@@ -1,4 +1,4 @@
-package com.dwp.datakeyservice;
+package com.github.nicholasjgreen;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

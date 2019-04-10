@@ -1,8 +1,8 @@
-package com.dwp.datakeyservice.controller;
+package com.github.nicholasjgreen.controller;
 
-import com.dwp.datakeyservice.dto.DecryptDataKeyResponse;
-import com.dwp.datakeyservice.dto.GenerateDataKeyResponse;
-import com.dwp.datakeyservice.service.DataKeyService;
+import com.github.nicholasjgreen.dto.DecryptDataKeyResponse;
+import com.github.nicholasjgreen.dto.GenerateDataKeyResponse;
+import com.github.nicholasjgreen.service.DataKeyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
