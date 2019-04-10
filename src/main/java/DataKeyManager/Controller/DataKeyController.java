@@ -15,7 +15,7 @@ public class DataKeyController {
     }
 
     @RequestMapping("/datakey/actions/decrypt")
-    public DecryptDataKeyResponse Decrypt(@RequestParam(value="keyId") String datakeyEncryptionKeyId {
+    public DecryptDataKeyResponse Decrypt(@RequestParam(value="keyId") String datakeyEncryptionKeyId) {
         return null;
     }
 }
