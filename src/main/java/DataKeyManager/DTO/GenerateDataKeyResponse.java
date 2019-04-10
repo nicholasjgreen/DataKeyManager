@@ -2,7 +2,7 @@ package DataKeyManager.DTO;
 
 @SuppressWarnings("unused")
 public class GenerateDataKeyResponse {
-    public String keyEncryptionKeyId;
-    public String plaintextKey;
-    public String ciphertextKey;
+    public String dataKeyEncryptionKeyId;
+    public String plaintextDataKey;
+    public String ciphertextDataKey;
 }

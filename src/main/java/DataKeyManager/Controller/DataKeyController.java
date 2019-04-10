@@ -13,7 +13,7 @@ public class DataKeyController {
     }
 
     @RequestMapping(value="/datakey/actions/decrypt", method = RequestMethod.POST)
-    public DecryptDataKeyResponse Decrypt(@RequestParam(value="keyId") String datakeyEncryptionKeyId, @RequestBody String ciphertextDatakey) {
+    public DecryptDataKeyResponse Decrypt(@RequestParam(value="keyId") String dataKeyEncryptionKeyId, @RequestBody String ciphertextDataKey) {
         return new DecryptDataKeyResponse();
     }
 }
