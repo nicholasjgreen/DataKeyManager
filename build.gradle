@@ -33,5 +33,3 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
-// Define the main class for the application
-mainClassName = 'DataKeyManager.App'

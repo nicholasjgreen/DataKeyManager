@@ -2,20 +2,18 @@ package DataKeyManager.Controller;
 
 import DataKeyManager.DTO.DecryptDataKeyResponse;
 import DataKeyManager.DTO.GenerateDataKeyResponse;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class DataKeyController {
 
-    @RequestMapping("/datakey")
+    @RequestMapping(value="/datakey", method = RequestMethod.GET)
     public GenerateDataKeyResponse Generate(){
-        return null;
+        return new GenerateDataKeyResponse();
     }
 
-    @RequestMapping("/datakey/actions/decrypt")
-    public DecryptDataKeyResponse Decrypt(@RequestParam(value="keyId") String datakeyEncryptionKeyId) {
-        return null;
+    @RequestMapping(value="/datakey/actions/decrypt", method = RequestMethod.POST)
+    public DecryptDataKeyResponse Decrypt(@RequestParam(value="keyId") String datakeyEncryptionKeyId, @RequestBody String ciphertextDatakey) {
+        return new DecryptDataKeyResponse();
     }
 }
