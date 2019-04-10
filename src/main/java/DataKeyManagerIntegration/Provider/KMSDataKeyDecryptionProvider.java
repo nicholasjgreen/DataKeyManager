@@ -1,4 +1,4 @@
-package DataKeyManager.Provider;
+package DataKeyManagerIntegration.Provider;
 
 import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
@@ -13,7 +13,7 @@ public class KMSDataKeyDecryptionProvider {
     private Base64.Encoder encoder = Base64.getEncoder();
     private Base64.Decoder decoder = Base64.getDecoder();
 
-    public DataKeyManager.DTO.DecryptDataKeyResult decryptDataKey(String dataKeyEncryptionKeyId, String ciphertextDataKey) {
+    public DataKeyManagerIntegration.DTO.DecryptDataKeyResult decryptDataKey(String dataKeyEncryptionKeyId, String ciphertextDataKey) {
 
         ByteBuffer ciphertextDataKeybuffer = ByteBuffer.wrap(decoder.decode(ciphertextDataKey));
         DecryptRequest req = new DecryptRequest().withCiphertextBlob(ciphertextDataKeybuffer);
@@ -27,7 +27,7 @@ public class KMSDataKeyDecryptionProvider {
         byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         DecryptResult result = kmsClient.decrypt(req);
-        return new DataKeyManager.DTO.DecryptDataKeyResult(result.getKeyId(),
+        return new DataKeyManagerIntegration.DTO.DecryptDataKeyResult(result.getKeyId(),
                 encoder.encodeToString(iv),
                 encoder.encodeToString(result.getPlaintext().array()));
     }

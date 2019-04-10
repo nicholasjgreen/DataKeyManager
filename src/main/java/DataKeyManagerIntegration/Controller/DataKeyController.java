@@ -1,8 +1,8 @@
-package DataKeyManager.Controller;
+package DataKeyManagerIntegration.Controller;
 
-import DataKeyManager.DTO.DecryptDataKeyResult;
-import DataKeyManager.DTO.GenerateDataKeyResult;
-import DataKeyManager.Service.DataKeyService;
+import DataKeyManagerIntegration.DTO.DecryptDataKeyResult;
+import DataKeyManagerIntegration.DTO.GenerateDataKeyResult;
+import DataKeyManagerIntegration.Service.DataKeyService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -1,4 +1,4 @@
-package DataKeyManager.DTO;
+package DataKeyManagerIntegration.DTO;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class GenerateDataKeyResult {

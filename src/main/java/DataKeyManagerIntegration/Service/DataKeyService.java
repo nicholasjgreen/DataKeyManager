@@ -1,10 +1,10 @@
-package DataKeyManager.Service;
+package DataKeyManagerIntegration.Service;
 
-import DataKeyManager.DTO.DecryptDataKeyResult;
-import DataKeyManager.DTO.GenerateDataKeyResult;
-import DataKeyManager.Provider.KMSCurrentKeyIdProvider;
-import DataKeyManager.Provider.KMSDataKeyDecryptionProvider;
-import DataKeyManager.Provider.KMSDataKeyGeneratorProvider;
+import DataKeyManagerIntegration.DTO.DecryptDataKeyResult;
+import DataKeyManagerIntegration.DTO.GenerateDataKeyResult;
+import DataKeyManagerIntegration.Provider.KMSCurrentKeyIdProvider;
+import DataKeyManagerIntegration.Provider.KMSDataKeyDecryptionProvider;
+import DataKeyManagerIntegration.Provider.KMSDataKeyGeneratorProvider;
 
 public class DataKeyService {
     private KMSDataKeyGeneratorProvider dataKeyProvider = new KMSDataKeyGeneratorProvider();

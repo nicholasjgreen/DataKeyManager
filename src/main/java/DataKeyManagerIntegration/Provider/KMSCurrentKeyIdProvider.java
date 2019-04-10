@@ -1,4 +1,4 @@
-package DataKeyManager.Provider;
+package DataKeyManagerIntegration.Provider;
 
 import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
