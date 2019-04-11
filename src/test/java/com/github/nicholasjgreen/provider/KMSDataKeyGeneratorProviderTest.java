@@ -1,25 +1,26 @@
-package DataKeyManagerIntegration.Provider;
+package com.github.nicholasjgreen.provider;
 
+import com.github.nicholasjgreen.dto.GenerateDataKeyResponse;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
 public class KMSDataKeyGeneratorProviderTest {
 
     @Test
-    public void canGenerateDataKey(){
+    public void canGenerateDataKey() {
         KMSCurrentKeyIdProvider keyIdProvider = new KMSCurrentKeyIdProvider();
         KMSDataKeyGeneratorProvider providerUnderTest = new KMSDataKeyGeneratorProvider();
 
-        DataKeyManagerIntegration.DTO.GenerateDataKeyResult result = providerUnderTest.generateDataKey(keyIdProvider.getKeyId());
+        GenerateDataKeyResponse result = providerUnderTest.generateDataKey(keyIdProvider.getKeyId());
         Assert.notNull(result, "Must return a result");
     }
 
 
     @Test
-    public void canGenerateDataKeyFailure(){
+    public void canGenerateDataKeyFailure() {
         KMSDataKeyGeneratorProvider providerUnderTest = new KMSDataKeyGeneratorProvider();
 
-        DataKeyManagerIntegration.DTO.GenerateDataKeyResult result = providerUnderTest.generateDataKey("frederick no keys");
+        GenerateDataKeyResponse result = providerUnderTest.generateDataKey("frederick no keys");
         Assert.isNull(result, "Must return a null");
     }
 

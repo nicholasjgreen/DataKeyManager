@@ -1,8 +1,10 @@
-package DataKeyManagerIntegration.Service;
+package com.github.nicholasjgreen.service;
 
-import DataKeyManagerIntegration.DTO.DecryptDataKeyResult;
-import DataKeyManagerIntegration.DTO.GenerateDataKeyResult;
-import DataKeyManagerIntegration.Provider.*;
+import com.github.nicholasjgreen.dto.DecryptDataKeyResponse;
+import com.github.nicholasjgreen.dto.GenerateDataKeyResponse;
+import com.github.nicholasjgreen.provider.CurrentKeyIdProvider;
+import com.github.nicholasjgreen.provider.DataKeyDecryptionProvider;
+import com.github.nicholasjgreen.provider.DataKeyGeneratorProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,18 +15,22 @@ public class DataKeyService {
     private DataKeyDecryptionProvider dataKeyDecryptionProvider;
 
     @Autowired
-    public DataKeyService(DataKeyGeneratorProvider dataKeyProvider, CurrentKeyIdProvider currentKeyIdProvider, DataKeyDecryptionProvider dataKeyDecryptionProvider) {
+    public DataKeyService(
+            DataKeyGeneratorProvider dataKeyProvider,
+            CurrentKeyIdProvider currentKeyIdProvider,
+            DataKeyDecryptionProvider dataKeyDecryptionProvider
+    ) {
         this.dataKeyProvider = dataKeyProvider;
         this.currentKeyIdProvider = currentKeyIdProvider;
         this.dataKeyDecryptionProvider = dataKeyDecryptionProvider;
     }
 
-    public GenerateDataKeyResult generate() {
+    public GenerateDataKeyResponse generate() {
         String keyEncryptionKeyId = currentKeyIdProvider.getKeyId();
         return dataKeyProvider.generateDataKey(keyEncryptionKeyId);
     }
 
-    public DecryptDataKeyResult decrypt(String dataKeyEncryptionKeyId, String ciphertextDataKey) {
+    public DecryptDataKeyResponse decrypt(String dataKeyEncryptionKeyId, String ciphertextDataKey) {
         return dataKeyDecryptionProvider.decryptDataKey(dataKeyEncryptionKeyId, ciphertextDataKey);
     }
 }

@@ -1,15 +1,15 @@
-package DataKeyManagerIntegration.DTO;
+package com.github.nicholasjgreen.dto;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
-public class GenerateDataKeyResult {
+public class GenerateDataKeyResponse {
     public String dataKeyEncryptionKeyId;
     public String plaintextDataKey;
     public String ciphertextDataKey;
 
-    public GenerateDataKeyResult(){
+    public GenerateDataKeyResponse() {
     }
 
-    public GenerateDataKeyResult(String dataKeyEncryptionKeyId, String plaintextDataKey, String ciphertextDataKey){
+    public GenerateDataKeyResponse(String dataKeyEncryptionKeyId, String plaintextDataKey, String ciphertextDataKey) {
         this.dataKeyEncryptionKeyId = dataKeyEncryptionKeyId;
         this.plaintextDataKey = plaintextDataKey;
         this.ciphertextDataKey = ciphertextDataKey;

@@ -1,4 +1,4 @@
-package DataKeyManagerIntegration.Provider;
+package com.github.nicholasjgreen.provider;
 
 public interface CurrentKeyIdProvider {
     String getKeyId();
