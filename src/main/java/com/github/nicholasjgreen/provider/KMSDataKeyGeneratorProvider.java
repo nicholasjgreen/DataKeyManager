@@ -4,16 +4,20 @@ import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
 import com.amazonaws.services.kms.model.*;
 import com.github.nicholasjgreen.dto.GenerateDataKeyResponse;
+import com.github.nicholasjgreen.errors.DataKeyGenerationFailure;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
 
 @Service
 public class KMSDataKeyGeneratorProvider implements DataKeyGeneratorProvider {
-    private AWSKMS kmsClient = AWSKMSClientBuilder.defaultClient();
-    private Base64.Encoder encoder = Base64.getEncoder();
+    private Logger logger = LoggerFactory.getLogger(KMSDataKeyGeneratorProvider.class);
 
     public GenerateDataKeyResponse generateDataKey(String keyId) {
+        Base64.Encoder encoder = Base64.getEncoder();
+        AWSKMS kmsClient = AWSKMSClientBuilder.defaultClient();
         GenerateDataKeyRequest dataKeyRequest = new GenerateDataKeyRequest();
         dataKeyRequest.setKeyId(keyId);
         dataKeyRequest.setKeySpec("AES_128");
@@ -27,8 +31,8 @@ public class KMSDataKeyGeneratorProvider implements DataKeyGeneratorProvider {
             );
         } catch (NotFoundException | DisabledException | KeyUnavailableException | DependencyTimeoutException |
                 InvalidKeyUsageException | InvalidGrantTokenException | KMSInternalException | KMSInvalidStateException ex) {
-            // TODO: logging goes here
-            return null;
+            logger.error("Exception caught while communicating with KMS", ex);
+            throw new DataKeyGenerationFailure();
         }
     }
 }
