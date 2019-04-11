@@ -2,40 +2,52 @@ package com.github.nicholasjgreen.provider;
 
 import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
-import com.amazonaws.services.kms.model.DecryptRequest;
-import com.amazonaws.services.kms.model.DecryptResult;
+import com.amazonaws.services.kms.model.*;
 import com.github.nicholasjgreen.dto.DecryptDataKeyResponse;
+import com.github.nicholasjgreen.errors.DataKeyDecryptionFailure;
 import org.springframework.stereotype.Service;
 
 import java.nio.ByteBuffer;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Base64;
+import java.util.Random;
 
 @Service
 public class KMSDataKeyDecryptionProvider implements DataKeyDecryptionProvider {
+    private static final int IV_SIZE = 16;
     private AWSKMS kmsClient = AWSKMSClientBuilder.defaultClient();
     private Base64.Encoder encoder = Base64.getEncoder();
     private Base64.Decoder decoder = Base64.getDecoder();
 
     public DecryptDataKeyResponse decryptDataKey(String dataKeyEncryptionKeyId, String ciphertextDataKey) {
 
-        ByteBuffer ciphertextDataKeybuffer = ByteBuffer.wrap(decoder.decode(ciphertextDataKey));
-        DecryptRequest req = new DecryptRequest().withCiphertextBlob(ciphertextDataKeybuffer);
+        ByteBuffer ciphertextDataKeyBuffer = ByteBuffer.wrap(decoder.decode(ciphertextDataKey));
+        DecryptRequest req = new DecryptRequest().withCiphertextBlob(ciphertextDataKeyBuffer);
 
-        DecryptResult result = kmsClient.decrypt(req);
+        try {
+            DecryptResult result = kmsClient.decrypt(req);
 
-        // Check that the key ids match, otherwise this should not be allowed.
-        // Technically not required, but the HSM version will require the keyId
-        String decryptedKeyId = result.getKeyId();
-        //if(dataKeyEncryptionKeyId != kmsClient.decrypt(req).getKeyId())
-        //    return null;
+            // Check that the key ids match, otherwise this should not be allowed.
+            // Technically not required, but the HSM version will require the keyId
+            //String decryptedKeyId = result.getKeyId();
+            //if(dataKeyEncryptionKeyId != kmsClient.decrypt(req).getKeyId())
+            //    return null;
 
-        // Lame, but it will do for now
-        byte[] iv = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+            // Lame, but it will do for now
+            byte[] iv = new byte[IV_SIZE];
+            SecureRandom.getInstanceStrong().nextBytes(iv);
 
-        return new DecryptDataKeyResponse(
-                result.getKeyId(),
-                encoder.encodeToString(iv),
-                encoder.encodeToString(result.getPlaintext().array())
-        );
+            return new DecryptDataKeyResponse(
+                    result.getKeyId(),
+                    encoder.encodeToString(iv),
+                    encoder.encodeToString(result.getPlaintext().array())
+            );
+        }
+        catch(NotFoundException | DisabledException | InvalidCiphertextException | KeyUnavailableException |
+                DependencyTimeoutException | InvalidGrantTokenException | KMSInternalException |
+                KMSInvalidStateException | NoSuchAlgorithmException ex) {
+            throw new DataKeyDecryptionFailure();
+        }
     }
 }
