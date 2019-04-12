@@ -4,6 +4,12 @@ import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.AWSKMSClientBuilder;
 import com.amazonaws.services.kms.model.KeyListEntry;
 import com.amazonaws.services.kms.model.ListKeysRequest;
+import com.amazonaws.services.simplesystemsmanagement.AWSSimpleSystemsManagement;
+import com.amazonaws.services.simplesystemsmanagement.AWSSimpleSystemsManagementClientBuilder;
+import com.amazonaws.services.simplesystemsmanagement.model.GetParameterRequest;
+import com.amazonaws.services.simplesystemsmanagement.model.GetParameterResult;
+import com.amazonaws.services.simplesystemsmanagement.model.GetParametersRequest;
+import com.amazonaws.services.simplesystemsmanagement.model.GetParametersResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +19,28 @@ public class KMSCurrentKeyIdProvider implements CurrentKeyIdProvider {
 
     private AWSKMS kmsClient = AWSKMSClientBuilder.defaultClient();
 
+    /*
+    {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "ssm:GetParameter",
+            "Resource": "arn:aws:ssm:REGION_HERE:ACCOUNT_ID:parameter/DataKeyManager.currentKeyId"
+        }
+    ]
+}
+     */
+
+
     public String getKeyId() {
-        return this.listKeys(1).get(0).getKeyId();
+        AWSSimpleSystemsManagement client= AWSSimpleSystemsManagementClientBuilder.defaultClient();
+        GetParameterRequest request = new GetParameterRequest()
+            .withName("DataKeyManager.currentKeyId")
+            .withWithDecryption(false);
+        GetParameterResult result = client.getParameter(request);
+        return result.getParameter().getValue();
     }
 
     List<KeyListEntry> listKeys(int limit) {

@@ -19,6 +19,7 @@ dependencies {
     implementation 'com.google.guava:guava:27.0.1-jre'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.1.4.RELEASE'
     implementation 'com.amazonaws:aws-java-sdk-kms:1.11.534'
+    implementation 'com.amazonaws:aws-java-sdk-ssm:1.11.534'
 
     // Causes drama with the logging bindings.
     //implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.11.2'
