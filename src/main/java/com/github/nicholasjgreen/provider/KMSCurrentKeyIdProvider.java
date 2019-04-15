@@ -10,11 +10,13 @@ import com.amazonaws.services.simplesystemsmanagement.model.GetParameterRequest;
 import com.amazonaws.services.simplesystemsmanagement.model.GetParameterResult;
 import com.amazonaws.services.simplesystemsmanagement.model.GetParametersRequest;
 import com.amazonaws.services.simplesystemsmanagement.model.GetParametersResult;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Profile("KMS")
 public class KMSCurrentKeyIdProvider implements CurrentKeyIdProvider {
 
     private AWSKMS kmsClient = AWSKMSClientBuilder.defaultClient();
@@ -43,7 +45,7 @@ public class KMSCurrentKeyIdProvider implements CurrentKeyIdProvider {
         return result.getParameter().getValue();
     }
 
-    List<KeyListEntry> listKeys(int limit) {
+    private List<KeyListEntry> listKeys(int limit) {
         ListKeysRequest req = new ListKeysRequest().withLimit(limit);
         return kmsClient.listKeys(req).getKeys();
     }

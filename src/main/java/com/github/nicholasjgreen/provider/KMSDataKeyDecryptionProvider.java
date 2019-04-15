@@ -5,6 +5,7 @@ import com.amazonaws.services.kms.AWSKMSClientBuilder;
 import com.amazonaws.services.kms.model.*;
 import com.github.nicholasjgreen.dto.DecryptDataKeyResponse;
 import com.github.nicholasjgreen.errors.DataKeyDecryptionFailure;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.nio.ByteBuffer;
@@ -14,6 +15,7 @@ import java.util.Base64;
 import java.util.Random;
 
 @Service
+@Profile("KMS")
 public class KMSDataKeyDecryptionProvider implements DataKeyDecryptionProvider {
     private static final int IV_SIZE = 16;
     private AWSKMS kmsClient = AWSKMSClientBuilder.defaultClient();
@@ -43,10 +45,7 @@ public class KMSDataKeyDecryptionProvider implements DataKeyDecryptionProvider {
                     encoder.encodeToString(iv),
                     encoder.encodeToString(result.getPlaintext().array())
             );
-        }
-        catch(NotFoundException | DisabledException | InvalidCiphertextException | KeyUnavailableException |
-                DependencyTimeoutException | InvalidGrantTokenException | KMSInternalException |
-                KMSInvalidStateException | NoSuchAlgorithmException ex) {
+        } catch(Exception ex) {
             throw new DataKeyDecryptionFailure();
         }
     }
